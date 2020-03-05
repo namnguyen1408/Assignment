@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>View Departs: <span th:text="${departs.get().name}"></span></h1>
+<a href="/departs">Departs list</a>
+<table border="1">
+    <tr>
+        <th>First name</th>
+
+    </tr>
+    <th:block th:each="Staffs : ${staffs}">
+        <tr>
+            <td th:text="${Staffs.getName()}"></td>
+
+        </tr>
+    </th:block>
+</table>
+</body>
+</html>

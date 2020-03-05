@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Edit Staffs</h1>
+<p>
+    <a href="/staffs">Staffs list</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/edit-staffs}" th:object="${staffs}" method="post">
+    <input th:type="hidden" name="id" th:field="*{id}">
+    <table>
+        <tr>
+            <td> Name:</td>
+            <td><input type="text" th:field="*{name}"/></td>
+        </tr>
+        <tr>
+            <td>Address :</td>
+            <td><input type="text" th:field="*{adress}"/></td>
+        </tr>
+        <tr>
+            <td>Birthday :</td>
+            <td><input type="text" th:field="*{Birthday}"/></td>
+        </tr>
+        <tr>
+            <td>Email :</td>
+            <td><input type="text" th:field="*{Email}"/></td>
+        </tr>
+        <tr>
+            <td>Phone :</td>
+            <td><input type="text" th:field="*{Phone}"/></td>
+        </tr>
+        <tr>
+            <td>Salary :</td>
+            <td><input type="text" th:field="*{salary}"/></td>
+        </tr>
+        <tr>
+            <td>Notes:</td>
+            <td><textarea type="text" th:field="*{Notes}"> </textarea></td>
+
+        </tr>
+<!--        <tr>-->
+<!--            <td>DepartId:</td>-->
+<!--            <td><input type="text" th:field="*{DepartId}"/></td>-->
+<!--        </tr>-->
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Update Staffs"></td>
+        </tr>
+    </table>
+</body>
+</html>

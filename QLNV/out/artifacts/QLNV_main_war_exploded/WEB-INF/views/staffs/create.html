@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Create Staffs</h1>
+<p>
+    <a href="/staffs">Staffs list</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/create-staffs}" th:object="${staffs}" method="post">
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" th:field="*{name}"/></td>
+        </tr>
+        <tr>
+            <td>Adddress:</td>
+            <td><input type="text" th:field="*{adress}"/></td>
+        </tr>
+        <tr>
+            <td>Birthday:</td>
+            <td><input type="text" th:field="*{Birthday}"/></td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td><input type="text" th:field="*{Email}"/></td>
+        </tr>
+        <tr>
+            <td>Phone:</td>
+            <td><input type="text" th:field="*{Phone}"/></td>
+        </tr>
+        <tr>
+            <td>Salary:</td>
+            <td><input type="text" th:field="*{salary}"/></td>
+        </tr>
+        <tr>
+            <td>Notes:</td>
+            <td><input type="textarea" th:field="*{Notes}"/></td>
+        </tr>
+        <tr>
+            <td>Depart name:</td>
+            <td>
+                <select th:field="*{departs}">
+                    <option th:each="p : ${departs}" th:value="${p.id}" th:text="${p.name}"></option>
+                </select>
+            </td>
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td>DepartId:</td>-->
+<!--            <td><input type="text" th:field="*{DepartId}"/></td>-->
+<!--        </tr>-->
+
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Create Staffs"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

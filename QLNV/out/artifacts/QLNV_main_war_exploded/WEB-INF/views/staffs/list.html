@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" >
+    <title>Title</title>
+</head>
+<body>
+<a href="/create-staffs">Create new Staffs</a>
+<h1>Staffs</h1>
+<table border="1">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Adddress</th>
+        <th>Birthday</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Salary</th>
+        <th>DepartId</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <th:block th:each="Staffs : ${staffs}">
+        <tr>
+            <td th:text="${Staffs.id}"></td>
+            <td th:text="${Staffs.name}"></td>
+            <td th:text="${Staffs.adress}"></td>
+            <td th:text="${Staffs.Birthday}"></td>
+            <td th:text="${Staffs.Email}"></td>
+            <td th:text="${Staffs.Phone}"></td>
+            <td th:text="${Staffs.salary}"></td>
+            <td th:text="${Staffs.departs.name}"></td>
+            <td><a th:href="@{/edit-staffs/__${Staffs.id}__ }">Edit</a></td>
+            <td><a th:href="@{/delete-staffs/__${Staffs.id}__ }">Delete</a></td>
+        </tr>
+    </th:block>
+</table>
+<buttom > </buttom>
+</body>
+</html>
