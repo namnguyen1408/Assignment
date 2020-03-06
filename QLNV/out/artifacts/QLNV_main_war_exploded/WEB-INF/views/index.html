@@ -108,15 +108,15 @@
     </style>
 </head>
 <body>
-<form action="/home" method="post" id="signForm" class="login-form">
+<form action="/logon" method="post" id="signForm" class="login-form">
     <h1>Sign In</h1>
     <div class="txtb">
-        <input type="text" name="username" id="username">
-        <span data-placeholder="Username"></span>
+        <input type="text" name="username" id="username" placeholder="UserName">
+
     </div>
     <div class="txtb">
-        <input type="password" id="password" name="password" onblur="valitade_name()">
-        <span data-placeholder="Password"></span>
+        <input type="password" id="password" name="password" placeholder="password" onblur="valitade_name()">
+
     </div>
     <!--<p id="error"> </p>-->
     <input type="submit" id="btnLogin" class="logbtn" value="Login">

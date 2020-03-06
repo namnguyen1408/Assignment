@@ -1,5 +1,6 @@
 package com.ass.model;
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name ="staffs")
@@ -16,13 +17,20 @@ public class Staffs {
     private String salary;
     private String Notes;
 
+    @OneToMany(mappedBy = "staffs")
+    private Set<Records> records;
+
 
 
     @ManyToOne
     @JoinColumn(name = "departs_id")
     private Depart departs;
+
+
     public Staffs() {
     }
+
+
 
     public Staffs(String name, String adress, String Birthday, String photo, String Email, String Phone, String salary, String Notes ) {
         this.name = name;
@@ -114,6 +122,13 @@ public class Staffs {
 
     public void setDeparts(Depart departs) {
         this.departs = departs;
+    }
+    public Set<Records> getRecords() {
+        return records;
+    }
+
+    public void setRecords(Set<Records> records) {
+        this.records = records;
     }
 
 }

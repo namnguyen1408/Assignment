@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:img="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" >
+    <title>Title</title>
+</head>
+<style>
+    footer{margin: 10px 0;}
+
+    #customers {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    #customers td, #customers th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+    #customers tr:hover {background-color: #ddd;}
+
+    #customers th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    input[type=text],input[type=email]{
+        width: 100%;
+        padding: 10px 0px;
+        margin: 8px 0;
+        display: inline-block;
+
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    input[type=submit] {
+        width: 200px;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        text-align: center;
+    }
+    #list{
+        text-decoration: none;
+        width: 200px;
+        background-color: orchid;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        text-align: center;
+    }
+    #list1,#list2{
+        text-decoration: none;
+        width: 200px;
+        background-color: darkgray;
+        color: white;
+        padding: 10px 14px;
+        margin: 5px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        text-align: center;
+    }
+    #list1,#list2:hover{
+        color: white;
+        box-shadow: inset 0 0 20px black;
+    }
+    input[type=submit]:hover {
+        background-color: red;
+    }
+
+    #form {
+        width: 500px;
+        border-radius: 5px;
+        /* background-color: #f2f2f2; */
+        padding: 20px;
+    }
+
+    .notify span{font-size: 15px; color: blue;}
+</style>
+<link href="/resources/css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
+<link href="/resources/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+</head>
+<body>
+<!--header-->
+<div class="header">
+    <div class="header-top">
+        <div class="container">
+            <div class="lang_list">
+                <select tabindex="4" class="dropdown1">
+                    <option class="label" value="">Language</option>
+                    <option value="1">English</option>
+                    <option value="2">French</option>
+                    <option value="3">German</option>
+                </select>
+            </div>
+            <div class="top-right">
+                <ul>
+                    <li class="text"><a href="login.html">Logout</a></li>
+
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <div class="header-bottom">
+        <div class="container">
+            <!--/.content-->
+            <div class="content white">
+                <nav class="navbar navbar-default" role="navigation">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <h1 class="navbar-brand"><a  href="/">FlashManager</a></h1>
+                    </div>
+                    <!--/.navbar-header-->
+
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li><a href="/staffs">Employee Manager</a></li>
+                            <li><a href="/departs">Department Manager</a></li>
+                            <li><a href="/records">Records Manager</a></li>
+                        </ul>
+                    </div>
+                    <!--/.navbar-collapse-->
+                </nav>
+
+                <!--/.navbar-->
+                <br><br><br><br><p></p><br><br>
+                <!--footer-->
+                <h3>Records List</h3>
+                <br><br>
+                <p>
+                    <a href="/create-records" id="list">Creat new Record</a>
+                </p> <br><br><br>
+<table id = "customers">
+    <thead>
+    <tr>
+        <th>Id</th>
+<!--        <th>Name</th>-->
+        <th>Type</th>
+        <th>Reason</th>
+        <th>Date</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <th:block th:each="record : ${records}">
+        <tr >
+            <td ><p th:text="${record.id}"></p></td>
+<!--            <td><p th:text="${record.staffs.name()}"></p></td>-->
+            <td ><p th:text="${record.type}"></p></td>
+            <td ><p th:text="${record.reason}"></p></td>
+            <td ><p th:text="${record.date}"></p></td>
+            <td><a id="list1" th:href="@{/edit-records/__${record.id}__ }">Edit</a></td>
+            <td><a id="list2" th:href="@{/delete-records/__${record.id}__ }">Delete</a></td>
+
+        </tr>
+    </th:block>
+    </tbody>
+</table>
+<footer th:replace="mylayout :: footer"></footer>
+</body>
+</html>

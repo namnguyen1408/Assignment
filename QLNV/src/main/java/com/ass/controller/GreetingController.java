@@ -11,16 +11,16 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class GreetingController {
 
-    @GetMapping("/login")
+    @GetMapping("/")
     public String index()
     {
         return "index";
     }
-    @PostMapping("/home")
+    @PostMapping("/logon")
     public ModelAndView login(Model model, @RequestParam("username") String username, @RequestParam("password") String password) {
         Users users = new Users(username, password);
         model.addAttribute("message", "Dang nhap thanh cong");
-        ModelAndView modelAndView = new ModelAndView("home", "users", users);
+        ModelAndView modelAndView = new ModelAndView("/staffs/list", "users", users);
         return modelAndView;
     }
 }
